@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-
-import Filter from './Filter';
+import React from 'react';
 
 // class FilteredFruitList extends Component {
 //   constructor(props) {

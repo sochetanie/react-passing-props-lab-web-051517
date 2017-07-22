@@ -23,25 +23,23 @@ export default class App extends React.Component {
   fetchFilters = () => {
     fetch('/api/fruit_types')
       .then(response => response.json())
-      .then(filters => this.setState({ filters }));
+      .then(filters => this.setState({ ...this.state, filters: filters }));
   }
 
   fetchAllFruits = () => {
     fetch('/api/fruit')
       .then(response => response.json())
-      .then(fruit => this.setState({ fruit }));
+      .then(fruit => this.setState({ ...this.state, fruit: fruit }));
   }
 
   updateFilterCallback = event => {
     console.log('new filter: ', event.target.value);
-    this.setState({ currentFilter: event.target.value });
+    this.setState({ ...this.state, currentFilter: event.target.value });
   }
 
   render() {
     return (
-      <div>
-        <FruitBasket fruitList={this.state.fruit} filters={this.state.filters} currentFilter={this.state.currentFilter} handleFilterChange={this.updateFilterCallback}/>
-      </div>
+        <FruitBasket fruit={this.state.fruit} filters={this.state.filters} currentFilter={this.state.currentFilter} updateFilterCallback={this.updateFilterCallback}/>
       )
     // render <FruitBasket fruitList={this.props.items} />
   }
