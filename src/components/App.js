@@ -23,13 +23,13 @@ export default class App extends React.Component {
   fetchFilters = () => {
     fetch('/api/fruit_types')
       .then(response => response.json())
-      .then(filters => this.setState({ ...this.state, filters: filters }));
+      .then(filters => this.setState({ filters }));
   }
 
   fetchAllFruits = () => {
     fetch('/api/fruit')
       .then(response => response.json())
-      .then(fruit => this.setState({ ...this.state, fruit: fruit }));
+      .then(fruit => this.setState({ fruit }));
   }
 
   updateFilterCallback = event => {
